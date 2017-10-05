@@ -1,0 +1,3 @@
+CREATE USER 'tht'@'%' IDENTIFIED BY 'three_happy_things_2017';
+
+GRANT all ON three_happy_things.* TO 'tht'@'%';
