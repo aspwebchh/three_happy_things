@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using web.Models;
 
+
 namespace web.Controllers
 {
     public class HomeController : Controller
-    {
+    { 
         public IActionResult Index()
         {
             return View();

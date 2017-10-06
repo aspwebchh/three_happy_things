@@ -22,6 +22,14 @@ namespace web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            InitConfig();
+        }
+
+        private void InitConfig()
+        {
+            var connectionString = Configuration.GetConnectionString("DefaultConnection");
+            Common.Config.ConnectionString = connectionString;
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

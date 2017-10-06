@@ -1,0 +1,12 @@
+C:\dev\three_happy_things\web
+--output-path=obj\Release\netcoreapp2.0\
+--application-name=web
+--content-root=C:\dev\three_happy_things\web
+--file=C:\dev\three_happy_things\web\Views\Home\About.cshtml
+--file=C:\dev\three_happy_things\web\Views\Home\Contact.cshtml
+--file=C:\dev\three_happy_things\web\Views\Home\Index.cshtml
+--file=C:\dev\three_happy_things\web\Views\Shared\Error.cshtml
+--file=C:\dev\three_happy_things\web\Views\Shared\_Layout.cshtml
+--file=C:\dev\three_happy_things\web\Views\Shared\_ValidationScriptsPartial.cshtml
+--file=C:\dev\three_happy_things\web\Views\_ViewImports.cshtml
+--file=C:\dev\three_happy_things\web\Views\_ViewStart.cshtml

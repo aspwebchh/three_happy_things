@@ -1,0 +1,10 @@
+C:\dev\three_happy_things\web\bin\Release\netcoreapp2.0\web.deps.json
+C:\dev\three_happy_things\web\bin\Release\netcoreapp2.0\web.runtimeconfig.json
+C:\dev\three_happy_things\web\bin\Release\netcoreapp2.0\web.runtimeconfig.dev.json
+C:\dev\three_happy_things\web\bin\Release\netcoreapp2.0\web.dll
+C:\dev\three_happy_things\web\bin\Release\netcoreapp2.0\web.pdb
+C:\dev\three_happy_things\web\obj\Release\netcoreapp2.0\web.csproj.CoreCompileInputs.cache
+C:\dev\three_happy_things\web\obj\Release\netcoreapp2.0\web.AssemblyInfoInputs.cache
+C:\dev\three_happy_things\web\obj\Release\netcoreapp2.0\web.AssemblyInfo.cs
+C:\dev\three_happy_things\web\obj\Release\netcoreapp2.0\web.dll
+C:\dev\three_happy_things\web\obj\Release\netcoreapp2.0\web.pdb
