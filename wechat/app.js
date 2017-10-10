@@ -12,15 +12,14 @@ App({
     wx.login({
       success: res => {
           let code = res.code;
-          /*let url = 'https://api.weixin.qq.com/sns/jscode2session?appid=' + appId + '&secret=' + secret + '&js_code=' + code + '&grant_type=authorization_code';
+          let url = 'https://www.chhblog.com/tht/Api/GetOpenID?code=' + code;
           console.log( url );
           wx.request({
             url: url,
             success: function(res) {
               console.log(res);
             }
-          })*/
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+          });
       }
     })
   },

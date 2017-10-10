@@ -7,12 +7,24 @@ using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
 using Dapper;
 using Newtonsoft.Json;
+using System.Net;
+using System.IO;
+using System.Text;
 using web.Common;
+
 
 namespace web.Controllers
 {
     public class ApiController : Controller
     {
+        public string GetOpenID( string code )
+        {
+            const string APPID = "wx61895187739be1b1";
+            const string SECRET = "2487c3b5056a825d2caa9b1aac217902";
+            var url = "https://api.weixin.qq.com/sns/jscode2session?appid=" + APPID + "&secret=" + SECRET + "&js_code=" + code + "&grant_type=authorization_code";
+            return Http.HttpGet(url);
+        }
+
         public String Register(String nick)
         {
             var parameters = new List<MySqlParameter>()
