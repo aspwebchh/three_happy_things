@@ -11,12 +11,14 @@ using System.Net;
 using System.IO;
 using System.Text;
 using web.Common;
-
+using web.Models;
 
 namespace web.Controllers
 {
     public class ApiController : Controller
     {
+        private UserModel userModel = new UserModel();
+
         public string GetOpenID( string code )
         {
             const string APPID = "wx61895187739be1b1";
@@ -25,17 +27,10 @@ namespace web.Controllers
             return Http.HttpGet(url);
         }
 
-        public String Register(String nick)
+        public String Register(string openId, string nick)
         {
-            var parameters = new List<MySqlParameter>()
-            {
-                new MySqlParameter("?nick",MySqlDbType.VarChar)
-            };
-            parameters[0].Value = nick;
-            var sql = "insert into tht_user(nick,add_time) values (?nick,CURRENT_TIMESTAMP())";
-            DbHelper.ExecuteSql(sql, parameters);
-            var json = JsonConvert.SerializeObject(new ServerResult { Code = ServerResult.CODE_SUCCESS, Message = "注册成功" });
-            return json;
+            var result = userModel.Register(openId, nick);
+            return result;
         }
 
         public string RecordThing(int userId, String thing)

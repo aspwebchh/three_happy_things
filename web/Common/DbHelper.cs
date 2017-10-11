@@ -28,5 +28,12 @@ namespace web.Common
                 return list.ToList();
             }
         }
+
+        public static List<T> Query<T>( DBConnectionCallback<List<T>> callback ) {
+            using( MySqlConnection conn = new MySqlConnection(Config.ConnectionString) ) {
+                return callback(conn);
+            }
+        }
+
     }
 }
