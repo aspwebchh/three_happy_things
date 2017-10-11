@@ -1,4 +1,6 @@
-//app.js
+var util = require('./utils/util.js')
+var server = require('./utils/server.js')
+
 App({
   onLaunch: function() {
     const appId = "wx61895187739be1b1";
@@ -11,13 +13,19 @@ App({
 
     wx.login({
       success: res => {
+          let self = this;
           let code = res.code;
           let url = 'https://www.chhblog.com/tht/Api/GetOpenID?code=' + code;
-          console.log( url );
           wx.request({
             url: url,
             success: function(res) {
-              console.log(res);
+              let data = res.data;
+              let openId = data.openid;
+              let sesstionKey = data.session_key;
+              self.getUserInfo(function(data){
+                let nickName = data.nickName;
+                server.register(openId,nickName);
+              });
             }
           });
       }
