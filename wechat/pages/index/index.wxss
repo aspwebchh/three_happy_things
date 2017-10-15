@@ -1,3 +1,5 @@
+page{background-color:#63cea3; }
+
 .record_input {
   border: 1px solid #ccc;
   background: #fff;

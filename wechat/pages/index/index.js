@@ -1,3 +1,5 @@
+var user = require('../../utils/user.js')
+
 //index.js
 //获取应用实例
 var app = getApp()
@@ -14,10 +16,8 @@ Page({
   },
   onLoad: function () {
     var that = this
-    //调用应用实例的方法获取全局数据
-    app.getUserInfo(function(userInfo){
-
-      //更新数据
+    user.getUserInfoFromCache(function(userInfo){
+      console.log(userInfo)
       that.setData({
         userInfo:userInfo
       })
