@@ -87,8 +87,8 @@
     </view>
   </view>
 
-  <button class='record_btn'  bindtap="bindViewTap">
-   记录开心事
-  </button>
-
+<view class='record_input'>
+  <textarea fixed='true' auto-height='true' show-confirm-bar="true">
+  </textarea>
+</view>
 </view>

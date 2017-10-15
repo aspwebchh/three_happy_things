@@ -1,2 +1,0 @@
-textarea{ height: 300rpx; border: 1rpx solid #ccc; width: 90%;}
-button{ width: 90%; background-color: green; color: white; margin-top: 50rpx;}
