@@ -1,27 +1,53 @@
-page{background-color:#63cea3; }
+page {
+  background-color: #63cea3;
+  color: #333;
+}
+
+.container {
+  padding: 0 35rpx;
+}
 
 .record_input {
-  border: 1px solid #ccc;
   background: #fff;
-  width: 90%;
+  width: 100%;
   position: fixed;
   bottom: 0rpx;
   overflow: hidden;
+  height: 90rpx;
+  background-color: #44aa81;
+  color: white;
+  line-height: 90rpx;
+  text-indent: 40rpx;
 }
-.group {
-  border: 1px solid #ccc;
-  width: 85%;
+
+.item {
+  padding: 3vw;
+  width: calc(100% - 3vw * 2);
+  display: flex;
   margin-bottom: 20rpx;
-  padding: 20rpx;
-  border-radius: 15rpx;
-}
-
-.group > .date {
-  color: gray;
-  margin-bottom: 10rpx;
-}
-
-.group > .item {
-  padding: 10rpx 0;
+  border-radius: 8rpx;
   text-align: left;
+  background-color: white;
+  box-shadow: 1px 1px 1px #999;
+}
+
+.date {
+  width: 100%;
+  padding-bottom: 12rpx;
+  padding-top: 22rpx;
+  color: white;
+  font-size: 0.8em;
+  text-align: left;
+}
+
+.layer {
+  position: fixed;
+  width: 400rpx;
+  height: 200rpx;
+  background-color: #fff;
+  left: 50%;
+  top: 50%;
+  margin-left: -200rpx;
+  margin-top: -100rpx;
+  display: none;
 }
