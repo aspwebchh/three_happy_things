@@ -1,26 +1,38 @@
 var user = require('../../utils/user.js')
+var util = require('../../utils/util.js')
+
+function showWriteDialog(page) {
+  page.setData({
+    showWriteDialog: true
+  })
+}
+
+function hideWriteDialog(page) {
+  page.setData({
+    showWriteDialog: false
+  })
+}
 
 //index.js
 //获取应用实例
 var app = getApp()
 Page({
-  data: {
-    motto: 'Hello World',
-    userInfo: {}
+  onTab: function() {
+    showWriteDialog(this);
   },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../add/add'
-    })
+  onInput: function(e) {
+    let val = e.detail.value;
+    this.setData({content: val});
+  },
+  onMaskClick: function() {
+    hideWriteDialog(this);
+  },
+  onConfirm : function() {
+    hideWriteDialog(this);
+    let content = util.trim( this.data.content );
+    console.log( content );
   },
   onLoad: function () {
-    var that = this
-    user.getUserInfoFromCache(function(userInfo){
-      console.log(userInfo)
-      that.setData({
-        userInfo:userInfo
-      })
-    })
+
   }
 })

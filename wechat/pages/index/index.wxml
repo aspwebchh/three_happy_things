@@ -63,9 +63,14 @@
 
   </view>
 
-  <view class='record_input'>
+  <view class='record_input' bindtap='onTab'>
     撰写卡片...
   </view>
+
 </view>
 
-<view class='layer'>1</view>
+  <view  wx:if="{{showWriteDialog == true}}"  class='mask' bindtap='onMaskClick'>
+  </view>
+  <view wx:if="{{showWriteDialog == true}}" class='layer'>
+    <textarea bindinput='onInput' fixed='true' auto-focus='true' bindconfirm='onConfirm'></textarea>
+  </view>

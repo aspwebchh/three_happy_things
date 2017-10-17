@@ -42,12 +42,25 @@ page {
 
 .layer {
   position: fixed;
-  width: 400rpx;
-  height: 200rpx;
+  width: 90vw;
+  height: 300rpx;
   background-color: #fff;
   left: 50%;
-  top: 50%;
-  margin-left: -200rpx;
-  margin-top: -100rpx;
-  display: none;
+  top: 15%;
+  margin-left: -45vw;
+  z-index: 999;
+  border-radius: 8rpx;
+}
+
+.layer textarea{ width: 100%; height: 100%;left: 0; top: 0;}
+
+.mask {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background: #000;
+  left: 0;
+  top: 0;
+  opacity: 0.5;
+  z-index: 998;
 }
