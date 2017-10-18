@@ -73,4 +73,5 @@
   </view>
   <view wx:if="{{showWriteDialog == true}}" class='layer'>
     <textarea bindinput='onInput' fixed='true' auto-focus='true' bindconfirm='onConfirm'></textarea>
+    <image src='/images/yes.png' bindtap='onSubmit'></image>
   </view>

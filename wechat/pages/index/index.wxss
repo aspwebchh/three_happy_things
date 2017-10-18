@@ -52,7 +52,26 @@ page {
   border-radius: 8rpx;
 }
 
-.layer textarea{ width: 100%; height: 100%;left: 0; top: 0;}
+.layer textarea {
+  width: 70vw;
+  height: 80%;
+  left: 0;
+  top: 0;
+  display: inline-block;
+  margin-left: 40rpx;
+  margin-top: 5%;
+  margin-right: 10rpx;
+}
+
+.layer image {
+  width: 80rpx;
+  height: 80rpx;
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  margin-top: -40rpx;
+  opacity: 0.5;
+}
 
 .mask {
   width: 100vw;

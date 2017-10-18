@@ -16,7 +16,7 @@ namespace web.Models
         {
             var parameters = new List<MySqlParameter>()
             {
-                new MySqlParameter("?open_id", MySqlDbType.Int32),
+                new MySqlParameter("?open_id", MySqlDbType.VarChar),
                 new MySqlParameter("?content",MySqlDbType.Text)
             };
             parameters[0].Value = openId;

@@ -35,6 +35,7 @@ namespace web.Controllers
             return result;
         }
 
+        [HttpPost][HttpGet]
         public string RecordThing(string openId, String thing)
         {
             return thingModel.RecordThing(openId, thing);

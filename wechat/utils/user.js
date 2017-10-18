@@ -1,4 +1,5 @@
 var server = require('server.js')
+var urls = require('urls.js')
 
 function getUserInfoFromCache(callback) {
   var userInfo = wx.getStorageSync('userInfo');
@@ -10,9 +11,22 @@ function getUserInfoFromCache(callback) {
     success: res => {
       let self = this;
       let code = res.code;
-      let url = 'https://www.chhblog.com/tht/Api/GetOpenID?code=' + code;
+      let url = urls.openIdUrl + '?code=' + code;
       wx.request({
         url: url,
+        fail: function(res) {
+          wx.showModal({
+            title: '提示',
+            content: '您的手机无法使用该小程序，msg:' + res.errMsg,
+            success: function (res) {
+              if (res.confirm) {
+              
+              } else if (res.cancel) {
+               
+              }
+            }
+          })
+        },
         success: function (res) {
           let data = res.data;
           let openId = data.openid;
@@ -20,10 +34,9 @@ function getUserInfoFromCache(callback) {
           getUserInfo(function (userInfo) {
             let nickName = userInfo.nickName;
             server.register(openId, nickName, function (data) {
-              if (data.Code === 0) {
                 userInfo["open_id"] = openId;
                 wx.setStorageSync('userInfo', userInfo)
-              }
+                callback(userInfo);
             });
           });
         }

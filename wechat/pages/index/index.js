@@ -1,5 +1,6 @@
 var user = require('../../utils/user.js')
 var util = require('../../utils/util.js')
+var server = require('../../utils/server.js')
 
 function showWriteDialog(page) {
   page.setData({
@@ -27,10 +28,26 @@ Page({
   onMaskClick: function() {
     hideWriteDialog(this);
   },
-  onConfirm : function() {
+
+  submit: function() {
     hideWriteDialog(this);
-    let content = util.trim( this.data.content );
-    console.log( content );
+    let content = util.trim(this.data.content);
+    if( content == "") {
+      return;
+    }
+    user.getUserInfoFromCache(function (data) {
+      let openId = data["open_id"];
+      server.addCard(openId, content, function (data) {
+        console.log(data);
+      });
+    });
+  },
+
+  onConfirm : function() {
+    this.submit();
+  },
+  onSubmit: function() {
+    this.submit();
   },
   onLoad: function () {
 
