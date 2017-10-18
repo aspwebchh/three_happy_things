@@ -12,12 +12,14 @@ using System.IO;
 using System.Text;
 using web.Common;
 using web.Models;
+using web.Entity;
 
 namespace web.Controllers
 {
     public class ApiController : Controller
     {
         private UserModel userModel = new UserModel();
+        private ThingModel thingModel = new ThingModel();
 
         public string GetOpenID( string code )
         {
@@ -33,38 +35,14 @@ namespace web.Controllers
             return result;
         }
 
-        public string RecordThing(int userId, String thing)
+        public string RecordThing(string openId, String thing)
         {
-            var parameters = new List<MySqlParameter>()
-            {
-                new MySqlParameter("?user_id", MySqlDbType.Int32),
-                new MySqlParameter("?content",MySqlDbType.Text)
-            };
-            parameters[0].Value = userId;
-            parameters[1].Value = thing;
-            var sql = "insert into tht_thing(user_id, content,add_time) values (?user_id,?content,CURRENT_TIMESTAMP())";
-            DbHelper.ExecuteSql(sql, parameters);
-            var json = JsonConvert.SerializeObject(new ServerResult { Code = ServerResult.CODE_SUCCESS, Message = "记录成功" });
-            return json;
+            return thingModel.RecordThing(openId, thing);
         }
 
-        public string GetThings( int userId )
+        public string GetThings( string openId )
         {
-            var sql = "select * from tht_thing where user_id =" + userId;
-            var listResult = DbHelper.Query<Entity.Thing>(sql);
-            var init = new Dictionary<string, List<Entity.Thing>>();
-            var result = listResult.Aggregate(init, (prod, next) =>
-            {
-                var key = next.add_time.ToString("yyyy-MM-dd");
-                if( !prod.ContainsKey(key))
-                {
-                    prod[key] = new List<Entity.Thing>();
-                }
-                prod[key].Add(next);
-                return prod;
-            });
-            var json = JsonConvert.SerializeObject(result);
-            return json;
+            return thingModel.GetThings(openId);
         }
     }
 }

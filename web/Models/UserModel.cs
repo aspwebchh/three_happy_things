@@ -15,12 +15,9 @@ using web.Entity;
 
 namespace web.Models
 {
-    public class UserModel
+    public class UserModel : BaseModel
     {
-        private string JsonResult( int code, string msg ) {
-            var json = JsonConvert.SerializeObject(new ServerResult { Code = code, Message = msg });
-            return json;
-        }
+
 
         private bool IsRegistered( string openId ) {
             var result = DbHelper.Query<User>(conn => {
