@@ -1,8 +1,9 @@
 var urls = require('urls.js')
+var util = require('util.js')
 
 function register(openId, nickName, callback) {
   let url = urls.registerUrl + `?openId=${openId}&nick=${nickName}`;
-  wx.request({
+  util.request({
     url: url,
     success: function (response) {
       if (typeof (callback) === 'function') {
@@ -14,7 +15,7 @@ function register(openId, nickName, callback) {
 
 function addCard(openId, content, callback) {
   let url = urls.addCardUrl + "?openId=" + openId + "&thing=" + content;
-  wx.request({
+  util.request({
     url: url,
     // method: "POST",
     // data: {

@@ -1,5 +1,6 @@
 var server = require('server.js')
 var urls = require('urls.js')
+var util = require('util.js')
 
 function getUserInfoFromCache(callback) {
   var userInfo = wx.getStorageSync('userInfo');
@@ -12,21 +13,8 @@ function getUserInfoFromCache(callback) {
       let self = this;
       let code = res.code;
       let url = urls.openIdUrl + '?code=' + code;
-      wx.request({
+      util.request({
         url: url,
-        fail: function(res) {
-          wx.showModal({
-            title: '提示',
-            content: '您的手机无法使用该小程序，msg:' + res.errMsg,
-            success: function (res) {
-              if (res.confirm) {
-              
-              } else if (res.cancel) {
-               
-              }
-            }
-          })
-        },
         success: function (res) {
           let data = res.data;
           let openId = data.openid;

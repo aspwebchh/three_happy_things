@@ -32,13 +32,15 @@ Page({
   submit: function() {
     hideWriteDialog(this);
     let content = util.trim(this.data.content);
+    content = encodeURIComponent(content);
     if( content == "") {
       return;
     }
     user.getUserInfoFromCache(function (data) {
       let openId = data["open_id"];
       server.addCard(openId, content, function (data) {
-        console.log(data);
+        console.log(content);
+        //console.log(data);
       });
     });
   },

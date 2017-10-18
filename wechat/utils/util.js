@@ -21,9 +21,36 @@ function trim(str) {
     return "";
   }
   return str.replace( /(^\s+)|(\s+$)/g,"");
+} 
+
+function request( option ) {
+  if( typeof option === "object") {
+    if (typeof option.fail !== "function" ) {
+      option.fail = function(res) {
+        wx.showModal({
+          title: '提示',
+          content: '您的手机无法使用该小程序，msg:' + res.errMsg,
+          success: function (res) {
+            if (res.confirm) {
+
+            } else if (res.cancel) {
+
+            }
+          }
+        });
+      }
+    }
+    if (typeof option.complete !== "function") {
+      option.complete = function (res) {
+         console.log(res);
+      }
+    }
+    wx.request(option);
+  }
 }
 
 module.exports = {
   formatTime: formatTime,
-  trim: trim
+  trim: trim,
+  request: request
 }
