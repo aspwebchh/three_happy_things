@@ -29,7 +29,7 @@ namespace web.Models
         public string GetThings(string openId)
         {
             var listResult = DbHelper.Query<Thing>((conn) => {
-                var sql = "select * from tht_thing where open_id =@open_id";
+                var sql = "select * from tht_thing where open_id =@open_id order by add_time desc";
                 return conn.Query<Thing>(sql, new { open_id = openId }).ToList();
             });
             var init = new Dictionary<string, List<Entity.Thing>>();

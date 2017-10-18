@@ -8,7 +8,7 @@ namespace web.Entity
     public class Thing
     {
         public int id { get; set; }
-        public int user_id { get; set; }
+        public string open_id { get; set; }
         public string content { get; set; }
         public DateTime add_time { get; set; }
     }

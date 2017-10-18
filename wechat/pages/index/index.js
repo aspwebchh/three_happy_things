@@ -18,40 +18,60 @@ function hideWriteDialog(page) {
 //获取应用实例
 var app = getApp()
 Page({
-  onTab: function() {
+  onTab: function () {
     showWriteDialog(this);
   },
-  onInput: function(e) {
+  onInput: function (e) {
     let val = e.detail.value;
-    this.setData({content: val});
+    this.setData({ content: val });
   },
-  onMaskClick: function() {
+  onMaskClick: function () {
     hideWriteDialog(this);
   },
 
-  submit: function() {
+  submit: function () {
+    let self = this;
     hideWriteDialog(this);
     let content = util.trim(this.data.content);
     content = encodeURIComponent(content);
-    if( content == "") {
+    if (content == "") {
       return;
     }
     user.getUserInfoFromCache(function (data) {
       let openId = data["open_id"];
       server.addCard(openId, content, function (data) {
-        console.log(content);
-        //console.log(data);
+         self.load();
       });
     });
   },
 
-  onConfirm : function() {
+  onConfirm: function () {
     this.submit();
   },
-  onSubmit: function() {
+  onSubmit: function () {
     this.submit();
+  },
+
+  load: function() {
+    let self = this;
+    user.getUserInfoFromCache(function (data) {
+      let openId = data["open_id"];
+      server.getThings(openId, function (data) {
+        let result = [];
+        for (let key in data) {
+          let items = data[key];
+          result.push({ 'content': key, 'class': "date" });
+          items.reverse().forEach(item => {
+            item.class = "item";
+            result.push(item);
+          });
+        }
+        self.setData({ "data_list": result });
+        console.log(result);
+      });
+    });
   },
   onLoad: function () {
-
+    this.load();
   }
 })

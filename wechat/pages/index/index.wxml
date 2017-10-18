@@ -1,66 +1,7 @@
 <!--index.wxml-->
 <view class="container">
-  <view class='date'>2017-11-11</view>
-  <view class='item'>
-    买了青色柠檬和瑞士军刀，很满意
-  </view>
-  <view class='item'>
-    和方妹子聊天，文学相关内容
-  </view>
-  <view class='item'>
-    博客网站功能持续开发
-  </view>
-
-
-  <view class='item'>
-    晚餐的鸡很好吃
-  </view>
-  <view class='item'>
-    想到了公众号的内容方向
-
-  </view>
-
-  <view class='date'>2017-11-10</view>
-  <view class='item'>
-    爬山一下午，受伤的膝盖没痛
-  </view>
-  <view class='item'>
-    吾到了积少成多的道理， 不要一步想登天， 每天坚持做一点， 时间久了成果会很可观
-  </view>
-  <view class='item'>
-    net core 在 Linux上运行成功，以后可用于生产环境
-  </view>
-
-  <view class='item'>
-    爸爸出院
-  </view>
-
-    <view class='date'>2017-11-09</view>
-  <view class='item'>
-    昨天认识的妹纸主动约我见面
-
-  </view>
-
-  <view class='item'>
-    医生说爸爸的病没有大碍
-
-  </view>
-
-  <view class='item'>
-    大伯家乔迁，中午吃大餐
-  </view>
-
-  <view class='item'>
-    三个月不理我的网友祝我中秋快乐
-
-  </view>
-      <view class='date'>2017-11-08</view>
-  <view class='item'>
-    老爸的病相对于昨天严重了一些， 但是比前天要好， 恢复嘛， 总是要循序渐进慢慢的来
-  </view>
-  <view class='item'>
-    中午饭馄饨和鲜肉烧麦很好吃， 萧山第一人民医院旁边的那家
-
+  <view wx:for="{{data_list}}" wx:for-index="idx" wx:for-item="item" class='{{item.class}}'>
+      {{item.content}} 
   </view>
 
   <view class='record_input' bindtap='onTab'>

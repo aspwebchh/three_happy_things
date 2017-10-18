@@ -30,7 +30,20 @@ function addCard(openId, content, callback) {
   });
 }
 
+function getThings( openId, callback ) {
+  let url = urls.getThingsUrl + "?openId=" + openId;
+  util.request({
+    url: url,
+    success: function (response) {
+      if (typeof (callback) === 'function') {
+        callback(response.data);
+      }
+    }
+  });
+}
+
 module.exports = {
   register: register,
-  addCard: addCard
+  addCard: addCard,
+  getThings: getThings
 }

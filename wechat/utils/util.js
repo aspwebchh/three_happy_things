@@ -42,7 +42,7 @@ function request( option ) {
     }
     if (typeof option.complete !== "function") {
       option.complete = function (res) {
-         console.log(res);
+         //console.log(res);
       }
     }
     wx.request(option);
