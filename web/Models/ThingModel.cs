@@ -12,6 +12,18 @@ namespace web.Models
 {
     public class ThingModel : BaseModel
     {
+        public string DeleteThing( int id )
+        {
+            string sql = "delete from tht_thing where  id = ?id";
+            var parameters = new List<MySqlParameter>()
+            {
+                new MySqlParameter("?id", MySqlDbType.Int32)
+            };
+            parameters[0].Value = id;
+            DbHelper.ExecuteSql(sql, parameters);
+            return JsonResult(ServerResult.CODE_SUCCESS, "删除成功");
+        }
+
         public string RecordThing(string openId, string thing)
         {
             var parameters = new List<MySqlParameter>()

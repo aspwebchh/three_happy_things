@@ -6,22 +6,28 @@
         <text selectable='true'> {{item.content}} </text>
         <block wx:if="{{item.class == 'item'}}">
           <view class='switch'>
-            <view class='horizontal'>
+          <block wx:if="{{item.closeTool == true}}">
+            <view class='horizontal' bindtap='onOpenTool' data-id="{{item.id}}">
               <view></view>
               <view></view>
               <view></view>
             </view>
-            <view class='vertical'>
+            </block>
+             <block wx:if="{{item.closeTool != true}}">
+            <view class='vertical' bindtap='onCloseTool' data-id="{{item.id}}">
               <view></view>
               <view></view>
               <view></view>
             </view>
+            </block>
           </view>
           <view style="clear:both;"></view>
         </block>
       </view>
-      <block wx:if="{{item.class == 'item'}}">
-        <view class="line2">删除</view>
+      <block wx:if="{{item.class == 'item' && item.closeTool != true}}">
+        <view class="line2">
+        <text bindtap='onDel' data-id="{{item.id}}" class='del-btn'>删除</text>
+        </view>
       </block>
     </view>
   </block>

@@ -11,7 +11,7 @@ page {
   background: #fff;
   width: 100%;
   position: fixed;
-  bottom: 0rpx;
+  bottom: -1rpx;
   overflow: hidden;
   height: 90rpx;
   background-color: #44aa81;
@@ -21,7 +21,7 @@ page {
 }
 
 .item {
-  padding: 3vw;
+  padding: 2vh 3vw;
   width: 84vw;
   margin-bottom: 20rpx;
   border-radius: 8rpx;
@@ -30,9 +30,21 @@ page {
   box-shadow: 1px 1px 1px #999;
 }
 
+.item .line1 {
+  width: 84vw;
+  display: flex;
+}
 
-.item .line1{ width: 84vw; display: flex;}
-.item .line2{ width: 84vw; }
+.item .line2 {
+  width: 84vw;
+  color: gray;
+  font-size: 30rpx;
+  padding-top: 20rpx;
+}
+
+.item .del-btn {
+  margin-left: 10rpx;
+}
 
 .item text {
   width: 90%;
@@ -44,11 +56,11 @@ page {
 
 .horizontal {
   width: 40rpx;
-  height: 10rpx;
-  top: 50%;
+  height: 40rpx;
   position: relative;
-  left: 50%;
-  margin-left: -20rpx;
+  margin-left: 20rpx;
+  top: 50%;
+  margin-top: -20px;
 }
 
 .horizontal view {
@@ -56,9 +68,9 @@ page {
   height: 10rpx;
   margin-right: 5rpx;
   border-radius: 50%;
-  opacity: 0.5;
+  opacity: 0.3;
   background: #000;
-  float: left;
+  display: inline-block;
 }
 
 .horizontal view:last-child {
@@ -66,26 +78,26 @@ page {
 }
 
 .vertical {
-  width: 10rpx;
+  width: 40rpx;
   height: 40rpx;
-  display: none;
   position: relative;
+  margin-left: 40rpx;
+  margin-top: 30rpx;
   top: 50%;
   margin-top: -20rpx;
-  left: 50%;
 }
 
 .vertical view {
-    width: 10rpx;
+  width: 10rpx;
   height: 10rpx;
   margin-bottom: 5rpx;
   border-radius: 50%;
-  opacity: 0.5;
+  opacity: 0.3;
   background: #000;
 }
 
-.vertical view:last-child{
-   margin-bottom: 0;
+.vertical view:last-child {
+  margin-bottom: 0;
 }
 
 .date {

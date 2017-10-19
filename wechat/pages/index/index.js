@@ -40,7 +40,12 @@ Page({
     user.getUserInfoFromCache(function (data) {
       let openId = data["open_id"];
       server.addCard(openId, content, function (data) {
-         self.load();
+        wx.showToast({
+          title: data.Message,
+          duration: 2000
+        })
+        delete self.data.content
+        self.load();
       });
     });
   },
@@ -52,7 +57,41 @@ Page({
     this.submit();
   },
 
-  load: function() {
+  onDel: function (event) {
+    let self = this;
+    let id = event.currentTarget.dataset.id;
+    server.deleteThing( id , function( data ){
+      wx.showToast({
+        title: data.Message,
+        duration: 2000
+      });
+      self.load();
+    });
+  },
+
+  closeTool: function (id, isClose) {
+    let dataList = this.data["data_list"];
+    for (let i = 0; i < dataList.length; i++) {
+      let item = dataList[i];
+      if (item.id == id) {
+        item.closeTool = isClose;
+        break;
+      }
+    }
+    this.setData({ "data_list": dataList })
+  },
+
+  onOpenTool: function (event) {
+    let id = event.currentTarget.dataset.id;
+    this.closeTool(id, false);
+  },
+
+  onCloseTool: function (event) {
+    let id = event.currentTarget.dataset.id;
+    this.closeTool(id, true);
+  },
+
+  load: function () {
     let self = this;
     user.getUserInfoFromCache(function (data) {
       let openId = data["open_id"];
@@ -61,13 +100,13 @@ Page({
         for (let key in data) {
           let items = data[key];
           result.push({ 'content': key, 'class': "date" });
-          items.reverse().forEach(item => {
+          items.forEach(item => {
             item.class = "item";
+            item.closeTool = true;
             result.push(item);
           });
         }
         self.setData({ "data_list": result });
-        console.log(result);
       });
     });
   },

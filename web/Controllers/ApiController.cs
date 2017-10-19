@@ -45,5 +45,10 @@ namespace web.Controllers
         {
             return thingModel.GetThings(openId);
         }
+
+        public string DeleteThing(int id)
+        {
+            return thingModel.DeleteThing(id);
+        }
     }
 }

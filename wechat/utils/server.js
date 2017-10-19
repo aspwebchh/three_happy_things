@@ -42,8 +42,21 @@ function getThings( openId, callback ) {
   });
 }
 
+function deleteThing( id,callback ) {
+  let url = urls.deleteThing + "?id=" + id;
+  util.request({
+    url: url,
+    success: function (response) {
+      if (typeof (callback) === 'function') {
+        callback(response.data);
+      }
+    }
+  });
+}
+
 module.exports = {
   register: register,
   addCard: addCard,
-  getThings: getThings
+  getThings: getThings,
+  deleteThing: deleteThing
 }
