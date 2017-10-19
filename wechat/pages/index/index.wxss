@@ -4,7 +4,7 @@ page {
 }
 
 .container {
-  padding: 0 35rpx;
+  padding: 0 5vw;
 }
 
 .record_input {
@@ -22,13 +22,70 @@ page {
 
 .item {
   padding: 3vw;
-  width: calc(100% - 3vw * 2);
-  display: flex;
+  width: 84vw;
   margin-bottom: 20rpx;
   border-radius: 8rpx;
   text-align: left;
   background-color: white;
   box-shadow: 1px 1px 1px #999;
+}
+
+
+.item .line1{ width: 84vw; display: flex;}
+.item .line2{ width: 84vw; }
+
+.item text {
+  width: 90%;
+}
+
+.item .switch {
+  width: 10%;
+}
+
+.horizontal {
+  width: 40rpx;
+  height: 10rpx;
+  top: 50%;
+  position: relative;
+  left: 50%;
+  margin-left: -20rpx;
+}
+
+.horizontal view {
+  width: 10rpx;
+  height: 10rpx;
+  margin-right: 5rpx;
+  border-radius: 50%;
+  opacity: 0.5;
+  background: #000;
+  float: left;
+}
+
+.horizontal view:last-child {
+  margin-right: 0;
+}
+
+.vertical {
+  width: 10rpx;
+  height: 40rpx;
+  display: none;
+  position: relative;
+  top: 50%;
+  margin-top: -20rpx;
+  left: 50%;
+}
+
+.vertical view {
+    width: 10rpx;
+  height: 10rpx;
+  margin-bottom: 5rpx;
+  border-radius: 50%;
+  opacity: 0.5;
+  background: #000;
+}
+
+.vertical view:last-child{
+   margin-bottom: 0;
 }
 
 .date {

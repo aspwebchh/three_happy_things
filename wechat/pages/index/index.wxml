@@ -1,8 +1,30 @@
 <!--index.wxml-->
 <view class="container">
-  <view wx:for="{{data_list}}" wx:for-index="idx" wx:for-item="item" class='{{item.class}}'>
-      {{item.content}} 
-  </view>
+  <block wx:for="{{data_list}}" wx:for-index="idx" wx:for-item="item">
+    <view class='{{item.class}}'>
+      <view class='line1'>
+        <text selectable='true'> {{item.content}} </text>
+        <block wx:if="{{item.class == 'item'}}">
+          <view class='switch'>
+            <view class='horizontal'>
+              <view></view>
+              <view></view>
+              <view></view>
+            </view>
+            <view class='vertical'>
+              <view></view>
+              <view></view>
+              <view></view>
+            </view>
+          </view>
+          <view style="clear:both;"></view>
+        </block>
+      </view>
+      <block wx:if="{{item.class == 'item'}}">
+        <view class="line2">删除</view>
+      </block>
+    </view>
+  </block>
 
   <view class='record_input' bindtap='onTab'>
     撰写卡片...
@@ -10,9 +32,9 @@
 
 </view>
 
-  <view  wx:if="{{showWriteDialog == true}}"  class='mask' bindtap='onMaskClick'>
-  </view>
-  <view wx:if="{{showWriteDialog == true}}" class='layer'>
-    <textarea bindinput='onInput' fixed='true' auto-focus='true' bindconfirm='onConfirm'></textarea>
-    <image src='/images/yes.png' bindtap='onSubmit'></image>
-  </view>
+<view wx:if="{{showWriteDialog == true}}" class='mask' bindtap='onMaskClick'>
+</view>
+<view wx:if="{{showWriteDialog == true}}" class='layer'>
+  <textarea bindinput='onInput' fixed='true' auto-focus='true' bindconfirm='onConfirm' maxlength='5000'></textarea>
+  <image src='/images/yes.png' bindtap='onSubmit'></image>
+</view>
