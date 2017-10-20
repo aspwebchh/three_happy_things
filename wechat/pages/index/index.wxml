@@ -41,6 +41,6 @@
 <view wx:if="{{showWriteDialog == true}}" class='mask' bindtap='onMaskClick'>
 </view>
 <view wx:if="{{showWriteDialog == true}}" class='layer'>
-  <textarea bindinput='onInput' fixed='true' auto-focus='true' bindconfirm='onConfirm' maxlength='5000'></textarea>
+  <textarea placeholder='微不足道但美好的事' bindinput='onInput' fixed='true' auto-focus='true' bindconfirm='onConfirm' maxlength='5000' value="{{content}}"></textarea>
   <image src='/images/yes.png' bindtap='onSubmit'></image>
 </view>

@@ -44,7 +44,7 @@ Page({
           title: data.Message,
           duration: 1000
         });
-        delete self.data.content
+        self.setData({content:""});
         self.load();
       });
     });
