@@ -14,14 +14,14 @@ function register(openId, nickName, callback) {
 }
 
 function addCard(openId, content, callback) {
-  let url = urls.addCardUrl + "?openId=" + openId + "&thing=" + content;
+  let url = urls.addCardUrl;
   util.request({
     url: url,
-    // method: "POST",
-    // data: {
-    //   "openId": openId,
-    //   "thing": content
-    // },
+    method: "POST",
+    data: "openId=" + openId + "&thing=" + content,
+    header:{
+      'content-type': 'application/x-www-form-urlencoded'
+    },
     success: function (response) {
       if (typeof (callback) === 'function') {
         callback(response.data);

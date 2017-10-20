@@ -42,8 +42,8 @@ Page({
       server.addCard(openId, content, function (data) {
         wx.showToast({
           title: data.Message,
-          duration: 2000
-        })
+          duration: 1000
+        });
         delete self.data.content
         self.load();
       });
@@ -63,7 +63,7 @@ Page({
     server.deleteThing( id , function( data ){
       wx.showToast({
         title: data.Message,
-        duration: 2000
+        duration: 1000
       });
       self.load();
     });
@@ -91,7 +91,7 @@ Page({
     this.closeTool(id, true);
   },
 
-  load: function () {
+  load: function ( callback ) {
     let self = this;
     user.getUserInfoFromCache(function (data) {
       let openId = data["open_id"];
@@ -107,10 +107,18 @@ Page({
           });
         }
         self.setData({ "data_list": result });
+        if( typeof callback === "function") {
+          callback();
+        }
       });
     });
   },
   onLoad: function () {
-    this.load();
+    wx.showLoading({
+      title: '加载中'
+    })
+    this.load(function(){
+      wx.hideLoading();
+    });
   }
 })
